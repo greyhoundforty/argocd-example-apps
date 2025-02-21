@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: guestbook-ui-load-balancer
+  name: guestbook-ui
   annotations:
     service.kubernetes.io/ibm-load-balancer-cloud-provider-ip-type: "public"
 spec:
+  type: LoadBalancer
+  selector:
+    app: guestbook-ui
   ports:
   - port: 80
     targetPort: 80
-  selector:
-    app: guestbook-ui
- type: LoadBalancer
+
+ 
